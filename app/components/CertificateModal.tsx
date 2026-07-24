@@ -6,9 +6,13 @@ import { Minus, Plus, RotateCcw, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 
 export type Certificate = {
+  id: string;
   title: string;
   organization: string;
   completed: string;
+  language: string;
+  editionLabel: string;
+  note: string;
   description: string;
   skills: string[];
   image: string;
@@ -66,7 +70,7 @@ export default function CertificateModal({ certificate, onClose }: Props) {
       >
         <div className="certificate-modal-bar glass">
           <div>
-            <span>Original credential · Ukrainian</span>
+            <span>{certificate.editionLabel}</span>
             <strong id="certificate-title">{certificate.title}</strong>
           </div>
           <div className="zoom-controls" aria-label="Certificate zoom controls">
@@ -89,7 +93,7 @@ export default function CertificateModal({ certificate, onClose }: Props) {
           <div className="certificate-zoom-canvas" style={{ width: `${zoom * 100}%` }}>
             <img
               src={certificate.image}
-              alt={`${certificate.title} issued to Serhii Kharyponchuk by ${certificate.organization}`}
+              alt={`${certificate.title}, ${certificate.language} edition, issued to Serhii Kharyponchuk by ${certificate.organization}`}
               width={certificate.imageWidth}
               height={certificate.imageHeight}
               sizes="100vw"

@@ -175,8 +175,11 @@ h1 { max-width: 810px; margin: 0; font-size: clamp(58px, 5.5vw, 92px); font-weig
 .project-shot-secondary img { display: block; width: 100%; height: auto; border-radius: 8px; }
 .project-preview-badge { position: absolute; z-index: 4; bottom: 20px; left: 20px; padding: 8px 10px; border: 1px solid rgba(255,255,255,.15); border-radius: 999px; background: rgba(6,8,13,.74); color: #dbe3f0; font-size: 8px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; backdrop-filter: blur(12px); }
 
+.certificates-list { display: grid; gap: 28px; }
 .certificate-showcase { position: relative; display: grid; grid-template-columns: minmax(0, 1.06fr) minmax(360px, .94fr); gap: clamp(30px, 5vw, 70px); overflow: hidden; padding: 14px; border-radius: 30px; }
 .certificate-showcase::before { position: absolute; z-index: -1; top: -40%; right: -12%; width: 52%; height: 120%; border-radius: 50%; background: rgba(182,149,255,.16); filter: blur(80px); content: ""; }
+.certificate-showcase:nth-child(even) .certificate-media { order: 2; }
+.certificate-showcase:nth-child(even) .certificate-details { order: 1; padding-right: 0; padding-left: clamp(20px, 4vw, 52px); }
 .certificate-media { position: relative; display: grid; min-width: 0; min-height: 620px; overflow: hidden; padding: 20px; place-items: center; border: 1px solid var(--line); border-radius: 22px; background: linear-gradient(145deg, rgba(101,168,255,.08), rgba(182,149,255,.06)), var(--bg-elevated); color: var(--text); cursor: zoom-in; }
 .certificate-media img { display: block; width: 100%; height: auto; max-height: 680px; object-fit: contain; filter: drop-shadow(0 25px 35px rgba(0,0,0,.24)); transition: transform .45s cubic-bezier(.22,1,.36,1), filter .45s ease; }
 .certificate-media:hover img { transform: translateY(-5px) scale(1.012); filter: drop-shadow(0 32px 45px rgba(0,0,0,.32)); }
@@ -262,7 +265,8 @@ h1 { max-width: 810px; margin: 0; font-size: clamp(58px, 5.5vw, 92px); font-weig
   .preview-window, .preview-window-dual { width: 108%; height: 560px; }
   .certificate-showcase { grid-template-columns: 1fr; }
   .certificate-media { min-height: 560px; }
-  .certificate-details { padding: 38px 28px 46px; }
+  .certificate-details, .certificate-showcase:nth-child(even) .certificate-details { order: 2; padding: 38px 28px 46px; }
+  .certificate-showcase:nth-child(even) .certificate-media { order: 1; }
   .github-panel, .contact-section { grid-template-columns: 1fr; }
   .github-stats { margin-top: 15px; }
 }

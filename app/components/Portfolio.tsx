@@ -212,9 +212,28 @@ const projects: Project[] = [
 
 const certificates: Certificate[] = [
   {
+    id: "frontend-english",
     title: "Frontend Development Certificate",
     organization: "GoITeens Academy",
     completed: "December 2025",
+    language: "English",
+    editionLabel: "Official certificate · English edition",
+    note: "International English edition issued by GoITeens Academy.",
+    description:
+      "Successfully completed the Frontend (HTML/CSS) course and built graduation projects including an informational website and an e-commerce website.",
+    skills: ["HTML5", "CSS3", "Responsive Design", "Flexbox", "CSS Grid", "SCSS/SASS", "Git", "GitHub", "Figma", "Website Layout"],
+    image: "certificates/frontend-development-goiteens-english.webp",
+    imageWidth: 1055,
+    imageHeight: 1491,
+  },
+  {
+    id: "frontend-ukrainian",
+    title: "Frontend Development Certificate",
+    organization: "GoITeens Academy",
+    completed: "December 2025",
+    language: "Ukrainian",
+    editionLabel: "Official certificate · Ukrainian original",
+    note: "Original Ukrainian edition with the same verified course details.",
     description:
       "Successfully completed the Frontend (HTML/CSS) course and built graduation projects including an informational website and an e-commerce website.",
     skills: ["HTML5", "CSS3", "Responsive Design", "Flexbox", "CSS Grid", "SCSS/SASS", "Git", "GitHub", "Figma", "Website Layout"],
@@ -513,40 +532,47 @@ export default function Portfolio() {
           <section id="certificates" className="section-pad">
             <Reveal className="section-heading compact">
               <span className="section-index">04 — Certificates</span>
-              <h2>Verified learning, translated into practical work.</h2>
+              <h2>One verified achievement, presented internationally.</h2>
             </Reveal>
-            {certificates.map((certificate) => (
-              <Reveal className="certificate-showcase glass" key={certificate.title}>
-                <button className="certificate-media" onClick={() => setSelectedCertificate(certificate)} aria-label={`Open ${certificate.title} fullscreen`}>
-                  <img
-                    src={certificate.image}
-                    alt={`${certificate.title} from ${certificate.organization}`}
-                    width={certificate.imageWidth}
-                    height={certificate.imageHeight}
-                    sizes="(max-width: 900px) 92vw, 48vw"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <span className="certificate-image-overlay"><Plus size={17} /> View fullscreen</span>
-                </button>
-                <div className="certificate-details">
-                  <span className="credential-label"><i /> Original credential · Ukrainian</span>
-                  <h3>{certificate.title}</h3>
-                  <dl>
-                    <div><dt>Organization</dt><dd>{certificate.organization}</dd></div>
-                    <div><dt>Completed</dt><dd>{certificate.completed}</dd></div>
-                  </dl>
-                  <p>{certificate.description}</p>
-                  <span className="translation-note">English translation of the original certificate details</span>
-                  <ul className="certificate-skills" aria-label="Skills obtained">
-                    {certificate.skills.map((skill) => <li key={skill}>{skill}</li>)}
-                  </ul>
-                  <button className="button button-primary certificate-open" onClick={() => setSelectedCertificate(certificate)}>
-                    Open certificate <ExternalLink size={14} />
+            <div className="certificates-list">
+              {certificates.map((certificate) => (
+                <Reveal className="certificate-showcase glass" key={certificate.id}>
+                  <button
+                    className="certificate-media"
+                    onClick={() => setSelectedCertificate(certificate)}
+                    aria-label={`Open ${certificate.title}, ${certificate.language} edition, fullscreen`}
+                  >
+                    <img
+                      src={certificate.image}
+                      alt={`${certificate.title}, ${certificate.language} edition, from ${certificate.organization}`}
+                      width={certificate.imageWidth}
+                      height={certificate.imageHeight}
+                      sizes="(max-width: 900px) 92vw, 48vw"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className="certificate-image-overlay"><Plus size={17} /> View fullscreen</span>
                   </button>
-                </div>
-              </Reveal>
-            ))}
+                  <div className="certificate-details">
+                    <span className="credential-label"><i /> {certificate.editionLabel}</span>
+                    <h3>{certificate.title}</h3>
+                    <dl>
+                      <div><dt>Organization</dt><dd>{certificate.organization}</dd></div>
+                      <div><dt>Completed</dt><dd>{certificate.completed}</dd></div>
+                      <div><dt>Language</dt><dd>{certificate.language}</dd></div>
+                    </dl>
+                    <p>{certificate.description}</p>
+                    <span className="translation-note">{certificate.note}</span>
+                    <ul className="certificate-skills" aria-label="Skills obtained">
+                      {certificate.skills.map((skill) => <li key={skill}>{skill}</li>)}
+                    </ul>
+                    <button className="button button-primary certificate-open" onClick={() => setSelectedCertificate(certificate)}>
+                      Open certificate <ExternalLink size={14} />
+                    </button>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </section>
 
           <section id="github" className="section-pad github-section">

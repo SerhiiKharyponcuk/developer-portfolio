@@ -55,7 +55,10 @@ test("server-renders Serhii's production portfolio", async () => {
   assert.match(html, /GoITeens Academy/);
   assert.match(html, /December 2025/);
   assert.match(html, /frontend-development-goiteens\.webp/);
-  assert.match(html, /English translation of the original certificate details/);
+  assert.match(html, /frontend-development-goiteens-english\.webp/);
+  assert.match(html, /Official certificate/);
+  assert.match(html, /English edition/);
+  assert.match(html, /Ukrainian original/);
   assert.match(html, /application\/ld\+json/);
   const legacyName = ["Al", "ex M", "organ"].join("");
   assert.doesNotMatch(html, new RegExp(`${legacyName}|seven years|7 years`, "i"));

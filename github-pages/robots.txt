@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://serhiikharyponcuk.github.io/developer-portfolio/sitemap.xml
